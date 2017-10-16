@@ -20,5 +20,10 @@ namespace PoCTestProject.Com.Configs
 
             return formattedName;
         }
+
+        public static String GetTimestamp(DateTime time)
+        {
+            return time.ToString("yyyMMddHHmmssffff");
+        }
     }
 }

@@ -15,13 +15,20 @@ using System.Threading.Tasks;
 
 namespace PoCTestProject.Com.Configs
 {
+
     public class CWebDriver
     {
         private readonly IObjectContainer objectContainerPrivate;
+        
+        //Selenium Related properties
         private IWebDriver webdriver;
+        private static int itemCount = 0;
+
+        //ExtentReports Related properties
         private ExtentReports extentReports;
         private ExtentTest testInstance;
-        private static int itemCount = 0;
+
+        public string GetTimestamp { get; private set; }
 
         public CWebDriver(IObjectContainer objectContainer)
         {
@@ -53,8 +60,8 @@ namespace PoCTestProject.Com.Configs
 
         public void LogStep(String message)
         {
-            testInstance.Log(Status.Info, FormatUtils.formatCamelCaseText(message));
-            testInstance.AddScreenCaptureFromPath(generateScreenshot());
+            testInstance.Log(Status.Info, FormatUtils.formatCamelCaseText(message), MediaEntityBuilder.CreateScreenCaptureFromPath(generateScreenshot()).Build());
+            //testInstance.AddScreenCaptureFromPath(generateScreenshot());
         }
 
         internal void Flush()
@@ -67,8 +74,10 @@ namespace PoCTestProject.Com.Configs
 
             itemCount++;
             Screenshot ss = ((ITakesScreenshot)webdriver).GetScreenshot();
+            string timeStamp = FormatUtils.GetTimestamp(DateTime.Now);
 
-            String shotName = itemCount + "-" + Constants.PICTURE_NAME + "-SS.png";
+            String shotName = itemCount + "-" + Constants.PICTURE_NAME + "-" + timeStamp + ".png";
+            //String shotName = itemCount + "-" + Constants.PICTURE_NAME + "-SS.png";
             String shotNamePath = System.IO.Path.Combine(Constants.ReportPath, @shotName);
 
             ss.SaveAsFile(shotNamePath, ScreenshotImageFormat.Png);
