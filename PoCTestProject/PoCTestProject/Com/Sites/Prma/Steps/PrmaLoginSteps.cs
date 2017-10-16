@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using PoCTestProject.Com.Configs;
 using PoCTestProject.Com.Sites.Prma.Pages;
 using System;
@@ -20,29 +21,33 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         [Given(@"I navigate to the login URL")]
         public void GivenINavigateToTheLoginURL()
         {
+            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
             var baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
             webdriver.GetDriver().Navigate().GoToUrl(baseUrl + "/login");
-            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+           
         }
         
         [Given(@"I enter valid credentials")]
         public void GivenIEnterValidCredentials()
         {
+            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
             var userName = ConfigurationManager.AppSettings["adminUser"];
             var userPass = ConfigurationManager.AppSettings["adminPass"];
             LoginPage loginPage = new LoginPage(webdriver.GetDriver());
             loginPage.InputUserName(userName);
             loginPage.InputUserPass(userPass);
             loginPage.ClickLogin();
-            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+            
         }
 
         [When(@"I go to heatmap")]
         public void WhenIGoToHeatmap()
         {
+            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
             var baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
             webdriver.GetDriver().Navigate().GoToUrl(baseUrl + "/heatmap");
-            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+            Assert.AreSame("are", "there");
+            
         }
 
     }

@@ -23,6 +23,7 @@ namespace PoCTestProject.Com.Configs
 
         public static String GetTimestamp(DateTime time)
         {
+            //used for providing screenShots with unique names based on time
             return time.ToString("yyyMMddHHmmssffff");
         }
     }

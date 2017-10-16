@@ -17,8 +17,9 @@ namespace PoCTestProject.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("PrmaLogin", Description="\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-        "f two numbers", SourceFile="Features\\Prma.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("PrmaLogin", new string[] {
+            "retry:0"}, Description="\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
+        "f two numbers", SourceFile="Features\\Prma.feature", SourceLine=1)]
     public partial class PrmaLoginFeature
     {
         
@@ -32,7 +33,8 @@ namespace PoCTestProject.Features
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "PrmaLogin", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+                    "f two numbers", ProgrammingLanguage.CSharp, new string[] {
+                        "retry:0"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -64,18 +66,20 @@ namespace PoCTestProject.Features
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Add two numbers", new string[] {
-                "mytag"}, SourceLine=6)]
+                "mytag",
+                "yourtag"}, SourceLine=7)]
         public virtual void AddTwoNumbers()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", new string[] {
-                        "mytag"});
-#line 7
-this.ScenarioSetup(scenarioInfo);
+                        "mytag",
+                        "yourtag"});
 #line 8
- testRunner.Given("I navigate to the login URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 9
- testRunner.And("I enter valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("I navigate to the login URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
+ testRunner.And("I enter valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 11
  testRunner.When("I go to heatmap", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             this.ScenarioCleanup();

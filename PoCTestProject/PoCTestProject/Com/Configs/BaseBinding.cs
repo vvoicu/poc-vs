@@ -37,36 +37,19 @@ namespace PoCTestProject.Com.Selenium
         [AfterScenario]
         public void TearDown()
         {
-            //close driver
-            webdriver.GetDriver().Quit();
+            if (ScenarioContext.Current.TestError != null)
+            {
+                //write report to file if errors are found
+                webdriver.GetTestReportInstance().Log(Status.Fail, "Test ended with " + Status.Fail + " \n Stacktrace: " + ScenarioContext.Current.TestError);
+            }
+            else
+                webdriver.GetTestReportInstance().Log(Status.Pass, "Test ended with " + Status.Pass);
 
             //write report to file
-            var status = TestContext.CurrentContext.Result.Outcome.Status;
-            var stacktrace = string.IsNullOrEmpty(TestContext.CurrentContext.Result.StackTrace)
-                   ? ""
-                 : string.Format("{0}", TestContext.CurrentContext.Result.StackTrace);
-            Status logstatus;
-
-            Console.WriteLine("Status: " + status);
-
-            switch (status)
-            {
-                case TestStatus.Failed:
-                    logstatus = Status.Fail;
-                    break;
-                case TestStatus.Inconclusive:
-                    logstatus = Status.Warning;
-                    break;
-                case TestStatus.Skipped:
-                    logstatus = Status.Skip;
-                    break;
-                default:
-                    logstatus = Status.Pass;
-                    break;
-            }
-
-            webdriver.GetTestReportInstance().Log(logstatus, "Test ended with " + logstatus + " \n Stacktrace: " + stacktrace);
             webdriver.Flush();
+
+            //close driver
+            webdriver.GetDriver().Quit();
         }
     }
 }

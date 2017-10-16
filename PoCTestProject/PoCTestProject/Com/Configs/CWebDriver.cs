@@ -57,8 +57,15 @@ namespace PoCTestProject.Com.Configs
 
         public void LogStep(StepInfo stepInfo)
         {
-            testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text), MediaEntityBuilder.CreateScreenCaptureFromPath(generateScreenshot()).Build());
-            //testInstance.AddScreenCaptureFromPath(generateScreenshot());
+            if (ConfigurationManager.AppSettings["step.screenshot"].Contains("true"))
+            {
+                testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text), MediaEntityBuilder.CreateScreenCaptureFromPath(generateScreenshot()).Build());
+            }
+            else
+            {
+                testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text));
+                //testInstance.AddScreenCaptureFromPath(generateScreenshot());
+            }
         }
 
         internal void Flush()
