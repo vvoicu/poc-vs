@@ -47,6 +47,8 @@ namespace PoCTestProject.Com.Selenium
                     : string.Format("{0}", TestContext.CurrentContext.Result.StackTrace);
             Status logstatus;
 
+            Console.WriteLine("Status: " + status);
+
             switch (status)
             {
                 case TestStatus.Failed:

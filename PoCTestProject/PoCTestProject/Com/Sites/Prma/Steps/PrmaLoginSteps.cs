@@ -28,9 +28,11 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         [Given(@"I enter valid credentials")]
         public void GivenIEnterValidCredentials()
         {
+            var userName = ConfigurationManager.AppSettings["adminUser"];
+            var userPass = ConfigurationManager.AppSettings["adminPass"];
             LoginPage loginPage = new LoginPage(webdriver.GetDriver());
-            loginPage.InputUserName("aaaa");
-            loginPage.InputUserPass("bbbb");
+            loginPage.InputUserName(userName);
+            loginPage.InputUserPass(userPass);
             loginPage.ClickLogin();
             webdriver.LogStep(System.Reflection.MethodBase.GetCurrentMethod().Name);
         }

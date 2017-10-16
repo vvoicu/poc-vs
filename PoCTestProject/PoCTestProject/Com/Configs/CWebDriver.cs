@@ -77,7 +77,6 @@ namespace PoCTestProject.Com.Configs
             string timeStamp = FormatUtils.GetTimestamp(DateTime.Now);
 
             String shotName = itemCount + "-" + Constants.PICTURE_NAME + "-" + timeStamp + ".png";
-            //String shotName = itemCount + "-" + Constants.PICTURE_NAME + "-SS.png";
             String shotNamePath = System.IO.Path.Combine(Constants.ReportPath, @shotName);
 
             ss.SaveAsFile(shotNamePath, ScreenshotImageFormat.Png);
