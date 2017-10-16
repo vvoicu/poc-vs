@@ -10,29 +10,31 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
     [Binding]
     public class PrmaLoginSteps
     {
-        private IWebDriver webdriver;
+        private CWebDriver webdriver;
 
         public PrmaLoginSteps(CWebDriver driver)
         {
-            webdriver = driver.getDriver();
+            webdriver = driver;
         }
 
         [Given(@"I navigate to the login URL")]
         public void GivenINavigateToTheLoginURL()
         {
             var baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
-            webdriver.Navigate().GoToUrl(baseUrl);
+            webdriver.getDriver().Navigate().GoToUrl(baseUrl);
             Console.WriteLine("GivenINavigateToTheLoginURL");
+            webdriver.logInfo("I navigate to the login URL");
         }
         
         [Given(@"I enter valid credentials")]
         public void GivenIEnterValidCredentials()
         {
-            LoginPage loginPage = new LoginPage(webdriver);
+            LoginPage loginPage = new LoginPage(webdriver.getDriver());
             loginPage.inputUserName("aaaa");
             loginPage.inputUserPass("bbbb");
             loginPage.clickLogin();
             Console.WriteLine("GivenIEnterValidCredentials");
+            webdriver.logInfo("I enter valid credentials");
         }
     }
 }

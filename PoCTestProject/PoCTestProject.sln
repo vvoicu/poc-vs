@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoCTestProject", "PoCTestProject\PoCTestProject.csproj", "{2C4A2E83-B7E8-4BAB-89FA-8A2213C002A3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A5251F00-8811-4B66-83AC-566FB6B6E04D}"
+	ProjectSection(SolutionItems) = preProject
+		extent.xml = extent.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
