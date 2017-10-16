@@ -21,20 +21,20 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         public void GivenINavigateToTheLoginURL()
         {
             var baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
-            webdriver.getDriver().Navigate().GoToUrl(baseUrl);
+            webdriver.GetDriver().Navigate().GoToUrl(baseUrl);
             Console.WriteLine("GivenINavigateToTheLoginURL");
-            webdriver.logInfo("I navigate to the login URL");
+            webdriver.LogInfo("I navigate to the login URL");
         }
         
         [Given(@"I enter valid credentials")]
         public void GivenIEnterValidCredentials()
         {
-            LoginPage loginPage = new LoginPage(webdriver.getDriver());
-            loginPage.inputUserName("aaaa");
-            loginPage.inputUserPass("bbbb");
-            loginPage.clickLogin();
+            LoginPage loginPage = new LoginPage(webdriver.GetDriver());
+            loginPage.InputUserName("aaaa");
+            loginPage.InputUserPass("bbbb");
+            loginPage.ClickLogin();
             Console.WriteLine("GivenIEnterValidCredentials");
-            webdriver.logInfo("I enter valid credentials");
+            webdriver.LogInfo("I enter valid credentials");
         }
     }
 }

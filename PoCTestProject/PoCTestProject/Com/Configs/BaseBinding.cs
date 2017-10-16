@@ -18,25 +18,25 @@ namespace PoCTestProject.Com.Selenium
         }
 
         [BeforeScenario]
-        public void setUp()
+        public void SetUp()
         {
             //initialize webdriver
             webdriver = new CWebDriver(objectContainerPrivate);
-            webdriver.getDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            webdriver.GetDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             
             //initialize test name
-            webdriver.createTest(ScenarioContext.Current.ScenarioInfo.Title);
-            webdriver.getTestReportInstance().AssignCategory(ScenarioContext.Current.ScenarioInfo.Tags);
+            webdriver.CreateTest(ScenarioContext.Current.ScenarioInfo.Title);
+            webdriver.GetTestReportInstance().AssignCategory(ScenarioContext.Current.ScenarioInfo.Tags);
 
             //manage instances 
             objectContainerPrivate.RegisterInstanceAs<CWebDriver>(webdriver);
         }
 
         [AfterScenario]
-        public void tearDown()
+        public void TearDown()
         {
             //close driver
-            webdriver.getDriver().Quit();
+            webdriver.GetDriver().Quit();
             //string message = ScenarioContext.Current.TestError.Message;
             //write report details
             //webdriver.getTestReportInstance().Pass("");

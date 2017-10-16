@@ -27,10 +27,10 @@ namespace PoCTestProject.Com.Configs
             objectContainerPrivate = objectContainer;
             
             //init webDriver
-            webdriver = setWebdriver();
+            webdriver = SetWebdriver();
 
             //init Reports
-            var htmlReports = new ExtentHtmlReporter(Constants.EXTENT_REPORT_FILE);
+            var htmlReports = new ExtentHtmlReporter(Constants.ExtentReportFile);
             extentReports = new ExtentReports();
             extentReports.AttachReporter(htmlReports);
         }
@@ -40,7 +40,7 @@ namespace PoCTestProject.Com.Configs
             extentReports.Flush();
         }
 
-        private IWebDriver setWebdriver()
+        private IWebDriver SetWebdriver()
         {
             if (ConfigurationManager.AppSettings["webdriver.driver"].Contains("firefox"))
             {
@@ -63,29 +63,24 @@ namespace PoCTestProject.Com.Configs
             }
         }
 
-        public void createTest(String testName)
+        public void CreateTest(String testName)
         {
             testInstance = extentReports.CreateTest(testName);
         }
         
-        public void logInfo(String message)
+        public void LogInfo(String message)
         {
             testInstance.Log(Status.Info, message);
         }
 
-        public ExtentTest getTestReportInstance()
+        public ExtentTest GetTestReportInstance()
         {
             return testInstance;
         }
 
-        public IWebDriver getDriver()
+        public IWebDriver GetDriver()
         {
             return webdriver;
-        }
-
-        public void setDriver(IWebDriver driver)
-        {
-            webdriver = driver;
         }
 
 

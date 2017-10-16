@@ -22,21 +22,21 @@ namespace PoCTestProject.Com.Sites.Prma.Pages
         private By loginButton = By.CssSelector("button");
 
 
-        public void inputUserName(String userName)
+        public void InputUserName(String userName)
         {
             new WebDriverWait(webdriver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(userNameInput));
             
             webdriver.FindElement(userNameInput).SendKeys(userName);
         }
 
-        public void inputUserPass(String userPass)
+        public void InputUserPass(String userPass)
         {
             new WebDriverWait(webdriver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(userPassInput));
 
             webdriver.FindElement(userPassInput).SendKeys(userPass);
         }
 
-        public void clickLogin()
+        public void ClickLogin()
         {
             new WebDriverWait(webdriver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(loginButton));
 
