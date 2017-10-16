@@ -36,8 +36,12 @@ namespace PoCTestProject.Com.Configs
 
             //init Reports
             var htmlReports = new ExtentHtmlReporter(Constants.ExtentReportFile);
+            
             extentReports = new ExtentReports();
             extentReports.AttachReporter(htmlReports);
+
+            htmlReports.AppendExisting = true;
+            htmlReports.Configuration().ReportName = "PoC x PRMA";
         }
 
         public IWebDriver GetDriver()
