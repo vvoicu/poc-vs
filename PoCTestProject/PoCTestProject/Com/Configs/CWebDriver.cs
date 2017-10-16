@@ -7,11 +7,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using PoCTestProject.Com.Tools;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PoCTestProject.Com.Configs
 {
@@ -60,7 +56,7 @@ namespace PoCTestProject.Com.Configs
 
         public void LogStep(String message)
         {
-            testInstance.Log(Status.Info, FormatUtils.formatCamelCaseText(message), MediaEntityBuilder.CreateScreenCaptureFromPath(generateScreenshot()).Build());
+            testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(message), MediaEntityBuilder.CreateScreenCaptureFromPath(generateScreenshot()).Build());
             //testInstance.AddScreenCaptureFromPath(generateScreenshot());
         }
 
