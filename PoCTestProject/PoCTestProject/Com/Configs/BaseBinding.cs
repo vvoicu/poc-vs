@@ -25,7 +25,7 @@ namespace PoCTestProject.Com.Selenium
             //initialize webdriver
             webdriver = new CWebDriver(objectContainerPrivate);
             webdriver.GetDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            
+
             //initialize test name
             webdriver.CreateTest(ScenarioContext.Current.ScenarioInfo.Title);
             webdriver.GetTestReportInstance().AssignCategory(ScenarioContext.Current.ScenarioInfo.Tags);
@@ -39,12 +39,12 @@ namespace PoCTestProject.Com.Selenium
         {
             //close driver
             webdriver.GetDriver().Quit();
- 
+
             //write report to file
             var status = TestContext.CurrentContext.Result.Outcome.Status;
             var stacktrace = string.IsNullOrEmpty(TestContext.CurrentContext.Result.StackTrace)
-                    ? ""
-                    : string.Format("{0}", TestContext.CurrentContext.Result.StackTrace);
+                   ? ""
+                 : string.Format("{0}", TestContext.CurrentContext.Result.StackTrace);
             Status logstatus;
 
             Console.WriteLine("Status: " + status);
@@ -65,7 +65,7 @@ namespace PoCTestProject.Com.Selenium
                     break;
             }
 
-            webdriver.GetTestReportInstance().Log(logstatus, "Test ended with " + logstatus + stacktrace);
+            webdriver.GetTestReportInstance().Log(logstatus, "Test ended with " + logstatus + " \n Stacktrace: " + stacktrace);
             webdriver.Flush();
         }
     }

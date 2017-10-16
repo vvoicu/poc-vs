@@ -21,8 +21,8 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         public void GivenINavigateToTheLoginURL()
         {
             var baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
-            webdriver.GetDriver().Navigate().GoToUrl(baseUrl);
-            webdriver.LogStep(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            webdriver.GetDriver().Navigate().GoToUrl(baseUrl + "/login");
+            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
         }
         
         [Given(@"I enter valid credentials")]
@@ -34,7 +34,16 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
             loginPage.InputUserName(userName);
             loginPage.InputUserPass(userPass);
             loginPage.ClickLogin();
-            webdriver.LogStep(System.Reflection.MethodBase.GetCurrentMethod().Name);
+            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
         }
+
+        [When(@"I go to heatmap")]
+        public void WhenIGoToHeatmap()
+        {
+            var baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
+            webdriver.GetDriver().Navigate().GoToUrl(baseUrl + "/heatmap");
+            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+        }
+
     }
 }

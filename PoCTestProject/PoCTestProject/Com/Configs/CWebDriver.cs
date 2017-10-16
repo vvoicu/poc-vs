@@ -8,6 +8,7 @@ using OpenQA.Selenium.IE;
 using PoCTestProject.Com.Tools;
 using System;
 using System.Configuration;
+using TechTalk.SpecFlow;
 
 namespace PoCTestProject.Com.Configs
 {
@@ -54,9 +55,9 @@ namespace PoCTestProject.Com.Configs
             return testInstance;
         }
 
-        public void LogStep(String message)
+        public void LogStep(StepInfo stepInfo)
         {
-            testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(message), MediaEntityBuilder.CreateScreenCaptureFromPath(generateScreenshot()).Build());
+            testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text), MediaEntityBuilder.CreateScreenCaptureFromPath(generateScreenshot()).Build());
             //testInstance.AddScreenCaptureFromPath(generateScreenshot());
         }
 

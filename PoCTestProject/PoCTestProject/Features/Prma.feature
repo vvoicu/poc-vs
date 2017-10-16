@@ -7,3 +7,4 @@
 Scenario: Add two numbers
 	Given I navigate to the login URL
 	And I enter valid credentials
+	When I go to heatmap
