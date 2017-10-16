@@ -60,7 +60,7 @@ namespace PoCTestProject.Com.Configs
 
         public void LogStep(String message)
         {
-            testInstance.Log(Status.Info, FormatUtils.formatCamelCaseText(message), MediaEntityBuilder.CreateScreenCaptureFromPath(generateScreenshot()).Build());
+            testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(message), MediaEntityBuilder.CreateScreenCaptureFromPath(generateScreenshot()).Build());
             //testInstance.AddScreenCaptureFromPath(generateScreenshot());
         }
 
