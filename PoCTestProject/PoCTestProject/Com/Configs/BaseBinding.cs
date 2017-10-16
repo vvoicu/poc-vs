@@ -1,5 +1,7 @@
-﻿using BoDi;
+﻿using AventStack.ExtentReports;
+using BoDi;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using PoCTestProject.Com.Configs;
 using System;
 using TechTalk.SpecFlow;
@@ -37,11 +39,31 @@ namespace PoCTestProject.Com.Selenium
         {
             //close driver
             webdriver.GetDriver().Quit();
-            //string message = ScenarioContext.Current.TestError.Message;
-            //write report details
-            //webdriver.getTestReportInstance().Pass("");
-
+ 
             //write report to file
+            var status = TestContext.CurrentContext.Result.Outcome.Status;
+            var stacktrace = string.IsNullOrEmpty(TestContext.CurrentContext.Result.StackTrace)
+                    ? ""
+                    : string.Format("{0}", TestContext.CurrentContext.Result.StackTrace);
+            Status logstatus;
+
+            switch (status)
+            {
+                case TestStatus.Failed:
+                    logstatus = Status.Fail;
+                    break;
+                case TestStatus.Inconclusive:
+                    logstatus = Status.Warning;
+                    break;
+                case TestStatus.Skipped:
+                    logstatus = Status.Skip;
+                    break;
+                default:
+                    logstatus = Status.Pass;
+                    break;
+            }
+
+            webdriver.GetTestReportInstance().Log(logstatus, "Test ended with " + logstatus + stacktrace);
             webdriver.Flush();
         }
     }

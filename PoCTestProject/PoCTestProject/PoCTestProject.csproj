@@ -102,6 +102,7 @@
   <ItemGroup>
     <Compile Include="Com\Configs\BaseBinding.cs" />
     <Compile Include="Com\Configs\CWebDriver.cs" />
+    <Compile Include="Com\Configs\FormatUtils.cs" />
     <Compile Include="Com\Sites\Prma\Pages\LoginPage.cs" />
     <Compile Include="Com\Sites\Prma\Steps\PrmaLoginSteps.cs" />
     <Compile Include="Com\Tools\Constants.cs" />

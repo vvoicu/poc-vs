@@ -22,8 +22,7 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         {
             var baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
             webdriver.GetDriver().Navigate().GoToUrl(baseUrl);
-            Console.WriteLine("GivenINavigateToTheLoginURL");
-            webdriver.LogInfo("I navigate to the login URL");
+            webdriver.LogStep(System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
         
         [Given(@"I enter valid credentials")]
@@ -33,8 +32,7 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
             loginPage.InputUserName("aaaa");
             loginPage.InputUserPass("bbbb");
             loginPage.ClickLogin();
-            Console.WriteLine("GivenIEnterValidCredentials");
-            webdriver.LogInfo("I enter valid credentials");
+            webdriver.LogStep(System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
     }
 }
