@@ -39,7 +39,7 @@ namespace PoCTestProject.Com.Selenium
             webdriver.getDriver().Quit();
             //string message = ScenarioContext.Current.TestError.Message;
             //write report details
-            webdriver.getTestReportInstance().Pass("");
+            //webdriver.getTestReportInstance().Pass("");
 
             //write report to file
             webdriver.Flush();
