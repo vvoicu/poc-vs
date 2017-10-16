@@ -26,6 +26,7 @@ namespace PoCTestProject.Com.Selenium
             
             //initialize test name
             webdriver.createTest(ScenarioContext.Current.ScenarioInfo.Title);
+            webdriver.getTestReportInstance().AssignCategory(ScenarioContext.Current.ScenarioInfo.Tags);
 
             //manage instances 
             objectContainerPrivate.RegisterInstanceAs<CWebDriver>(webdriver);
@@ -34,10 +35,13 @@ namespace PoCTestProject.Com.Selenium
         [AfterScenario]
         public void tearDown()
         {
+            //close driver
             webdriver.getDriver().Quit();
-            webdriver.assignCategory("reg");
-            webdriver.Pass();
+            //string message = ScenarioContext.Current.TestError.Message;
+            //write report details
+            webdriver.getTestReportInstance().Pass("");
 
+            //write report to file
             webdriver.Flush();
         }
     }

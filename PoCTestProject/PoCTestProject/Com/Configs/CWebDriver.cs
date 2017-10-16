@@ -25,6 +25,7 @@ namespace PoCTestProject.Com.Configs
         public CWebDriver(IObjectContainer objectContainer)
         {
             objectContainerPrivate = objectContainer;
+            
             //init webDriver
             webdriver = setWebdriver();
 
@@ -37,12 +38,6 @@ namespace PoCTestProject.Com.Configs
         internal void Flush()
         {
             extentReports.Flush();
-        }
-
-        private void setReportConfig()
-        {
-
-
         }
 
         private IWebDriver setWebdriver()
@@ -72,20 +67,15 @@ namespace PoCTestProject.Com.Configs
         {
             testInstance = extentReports.CreateTest(testName);
         }
-
-        internal void Pass()
-        {
-            testInstance.Pass("we Dids it");
-        }
-
-        internal void assignCategory(string v)
-        {
-            testInstance.AssignCategory(v);
-        }
-
+        
         public void logInfo(String message)
         {
             testInstance.Log(Status.Info, message);
+        }
+
+        public ExtentTest getTestReportInstance()
+        {
+            return testInstance;
         }
 
         public IWebDriver getDriver()
