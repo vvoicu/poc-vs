@@ -1,20 +1,20 @@
-﻿using BoDi;
+﻿using AventStack.ExtentReports;
+using BoDi;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using PoCTestProject.Com.Configs;
-using RelevantCodes.ExtentReports;
 using System;
 using TechTalk.SpecFlow;
 
 namespace PoCTestProject.Com.Selenium
 {
     [Binding]
-    public class BaseBinding
+    public class BaseBinding302
     {
         private readonly IObjectContainer objectContainerPrivate;
         private CWebDriver webdriver;
 
-        public BaseBinding(IObjectContainer objectContainer)
+        public BaseBinding302(IObjectContainer objectContainer)
         {
             objectContainerPrivate = objectContainer;
         }
@@ -40,14 +40,10 @@ namespace PoCTestProject.Com.Selenium
             if (ScenarioContext.Current.TestError != null)
             {
                 //write report to file if errors are found
-               // webdriver.GetTestReportInstance().Log(LogStatus.Fail, "Test ended with " + LogStatus.Fail + " \n Stacktrace: " + ScenarioContext.Current.TestError);
-                webdriver.EndTest();
+                webdriver.GetTestReportInstance().Log(Status.Fail, "Test ended with " + Status.Fail + " \n Stacktrace: " + ScenarioContext.Current.TestError);
             }
             else
-            {
-               // webdriver.GetTestReportInstance().Log(LogStatus.Pass, "Test ended with " + LogStatus.Pass);
-                webdriver.EndTest();
-            }
+                webdriver.GetTestReportInstance().Log(Status.Pass, "Test ended with " + Status.Pass);
 
             //write report to file
             webdriver.Flush();
