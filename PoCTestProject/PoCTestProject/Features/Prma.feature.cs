@@ -17,9 +17,8 @@ namespace PoCTestProject.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("PrmaLogin", new string[] {
-            "retry:0"}, Description="\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-        "f two numbers", SourceFile="Features\\Prma.feature", SourceLine=1)]
+    [TechTalk.SpecRun.FeatureAttribute("PrmaLogin", Description="\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
+        "f two numbers", SourceFile="Features\\Prma.feature", SourceLine=0)]
     public partial class PrmaLoginFeature
     {
         
@@ -33,8 +32,7 @@ namespace PoCTestProject.Features
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "PrmaLogin", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-                    "f two numbers", ProgrammingLanguage.CSharp, new string[] {
-                        "retry:0"});
+                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -66,11 +64,13 @@ namespace PoCTestProject.Features
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Add two numbers", new string[] {
+                "retry:0",
                 "mytag",
                 "yourtag"}, SourceLine=7)]
         public virtual void AddTwoNumbers()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", new string[] {
+                        "retry:0",
                         "mytag",
                         "yourtag"});
 #line 8
@@ -85,14 +85,12 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Add to login", new string[] {
-                "mytag",
-                "someTag"}, SourceLine=13)]
-        public virtual void AddToLogin()
+        [TechTalk.SpecRun.ScenarioAttribute("Add my pickle", new string[] {
+                "dur"}, SourceLine=13)]
+        public virtual void AddMyPickle()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add to login", new string[] {
-                        "mytag",
-                        "someTag"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add my pickle", new string[] {
+                        "dur"});
 #line 14
 this.ScenarioSetup(scenarioInfo);
 #line 15
@@ -101,6 +99,46 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.And("I enter valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
+        }
+        
+        public virtual void AddToLogin(string _1, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "mytag",
+                    "someTag"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add to login", @__tags);
+#line 20
+this.ScenarioSetup(scenarioInfo);
+#line 21
+ testRunner.Given("I navigate to the login URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 22
+ testRunner.And("I enter valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Add to login, 2", new string[] {
+                "mytag",
+                "someTag"}, SourceLine=25)]
+        public virtual void AddToLogin_2()
+        {
+#line 20
+this.AddToLogin("2", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Add to login, 3", new string[] {
+                "mytag",
+                "someTag"}, SourceLine=25)]
+        public virtual void AddToLogin_3()
+        {
+#line 20
+this.AddToLogin("3", ((string[])(null)));
+#line hidden
         }
         
         [TechTalk.SpecRun.TestRunCleanup()]

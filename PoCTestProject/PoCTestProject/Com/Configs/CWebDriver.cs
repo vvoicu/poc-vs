@@ -1,10 +1,12 @@
-﻿using BoDi;
+﻿using AventStack.ExtentReports;
+using AventStack.ExtentReports.Reporter;
+using AventStack.ExtentReports.Reporter.Configuration;
+using BoDi;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using PoCTestProject.Com.Tools;
-using RelevantCodes.ExtentReports;
 using System;
 using System.Configuration;
 using TechTalk.SpecFlow;
@@ -22,7 +24,8 @@ namespace PoCTestProject.Com.Configs
 
         //ExtentReports Related properties
         private static ExtentReports extentReports;
-        private static ExtentTest testInstance;
+        private ExtentHtmlReporter htmlReports;
+        private ExtentTest testInstance;
 
         public string GetTimestamp { get; private set; }
 
@@ -43,13 +46,8 @@ namespace PoCTestProject.Com.Configs
 
         public void CreateTest(String testName)
         {
-            testInstance = extentReports.StartTest(testName);
+            testInstance = extentReports.CreateTest(testName);
             // testInstance = extentReports.CreateTest(testName).CreateNode(DateTime.Now.ToString());
-        }
-
-        public void EndTest()
-        {
-            extentReports.EndTest(testInstance);
         }
 
         public ExtentTest GetTestReportInstance()
@@ -61,11 +59,14 @@ namespace PoCTestProject.Com.Configs
         {
             if (ConfigurationManager.AppSettings["step.screenshot"].Contains("true"))
             {
-                testInstance.Log(LogStatus.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text));
+//                testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text), MediaEntityBuilder.CreateScreenCaptureFromPath(generateScreenshot()).Build());
+                testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text));
+
+                testInstance.AddScreenCaptureFromPath(generateScreenshot());
             }
             else
             {
-                testInstance.Log(LogStatus.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text));
+                testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text));
                 //testInstance.AddScreenCaptureFromPath(generateScreenshot());
             }
         }
@@ -115,19 +116,17 @@ namespace PoCTestProject.Com.Configs
         private void SetReportsConfiguration()
         {
             //init Reports
-            //var htmlReports = new ExtentHtmlReporter(Constants.ExtentReportFile);
-            // var htmlReports = new ExtentHtmlReporter(ScenarioContext.Current.ScenarioInfo.Title + "-" + Constants.ExtentReportFile);
+            htmlReports = new ExtentHtmlReporter(Constants.ExtentReportFile);
+            //htmlReports = new ExtentHtmlReporter(ScenarioContext.Current.ScenarioInfo.Title + "-" + Constants.ExtentReportFile);
 
             if (extentReports == null)
-                extentReports = new ExtentReports(Constants.ExtentReportFile, false);
+                extentReports = new ExtentReports();
 
+            extentReports.AttachReporter(htmlReports);
 
-           // extentReports.AttachReporter(htmlReports);
-
-           // htmlReports.AppendExisting = true;
-           // htmlReports.Configuration().ReportName = "PoC x PRMA " + DateTime.Now;
-           // htmlReports.Configuration().DocumentTitle = "PRMA Test Report";
-           // htmlReports.Configuration().Theme = Theme.Dark;
+            htmlReports.Configuration().ReportName = "PoC x PRMA " + DateTime.Now;
+            htmlReports.Configuration().DocumentTitle = "PRMA Test Report";
+            htmlReports.Configuration().Theme = Theme.Dark;
 
         }
     }
