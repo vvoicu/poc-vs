@@ -1,5 +1,6 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
+using AventStack.ExtentReports.Reporter.Configuration;
 using BoDi;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -16,7 +17,7 @@ namespace PoCTestProject.Com.Configs
     public class CWebDriver
     {
         private readonly IObjectContainer objectContainerPrivate;
-        
+
         //Selenium Related properties
         private IWebDriver webdriver;
         private static int itemCount = 0;
@@ -30,18 +31,11 @@ namespace PoCTestProject.Com.Configs
         public CWebDriver(IObjectContainer objectContainer)
         {
             objectContainerPrivate = objectContainer;
-            
+
             //init webDriver
             webdriver = SetWebdriver();
 
-            //init Reports
-            var htmlReports = new ExtentHtmlReporter(Constants.ExtentReportFile);
-            
-            extentReports = new ExtentReports();
-            extentReports.AttachReporter(htmlReports);
-
-            htmlReports.AppendExisting = true;
-            htmlReports.Configuration().ReportName = "PoC x PRMA";
+            SetReportsConfiguration();
         }
 
         public IWebDriver GetDriver()
@@ -52,6 +46,7 @@ namespace PoCTestProject.Com.Configs
         public void CreateTest(String testName)
         {
             testInstance = extentReports.CreateTest(testName);
+            // testInstance = extentReports.CreateTest(testName).CreateNode(DateTime.Now.ToString());
         }
 
         public ExtentTest GetTestReportInstance()
@@ -112,6 +107,26 @@ namespace PoCTestProject.Com.Configs
                 options.AddArgument("--ignore-certificate-errors");
                 return new ChromeDriver(options);
             }
+        }
+
+        private void SetReportsConfiguration()
+        {
+            //init Reports
+            var htmlReports = new ExtentHtmlReporter(Constants.ExtentReportFile);
+            // var htmlReports = new ExtentHtmlReporter(ScenarioContext.Current.ScenarioInfo.Title + "-" + Constants.ExtentReportFile);
+
+            if (extentReports == null)
+
+                extentReports = new ExtentReports();
+
+
+            extentReports.AttachReporter(htmlReports);
+
+            htmlReports.AppendExisting = true;
+            htmlReports.Configuration().ReportName = "PoC x PRMA " + DateTime.Now;
+            htmlReports.Configuration().DocumentTitle = "PRMA Test Report";
+            htmlReports.Configuration().Theme = Theme.Dark;
+
         }
     }
 }
