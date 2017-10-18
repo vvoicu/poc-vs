@@ -10,6 +10,11 @@ Scenario: Add two numbers
 	And I enter valid credentials
 	When I go to heatmap
 
+@Dia
+Scenario: Steel Request
+	Given I navigate to the login URL
+	And I enter valid credentials
+
 @dur
 Scenario: Add my pickle
 	Given I navigate to the login URL

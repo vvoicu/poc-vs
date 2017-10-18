@@ -85,17 +85,33 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Add my pickle", new string[] {
-                "dur"}, SourceLine=13)]
-        public virtual void AddMyPickle()
+        [TechTalk.SpecRun.ScenarioAttribute("Steel Request", new string[] {
+                "Dia"}, SourceLine=13)]
+        public virtual void SteelRequest()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add my pickle", new string[] {
-                        "dur"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Steel Request", new string[] {
+                        "Dia"});
 #line 14
 this.ScenarioSetup(scenarioInfo);
 #line 15
  testRunner.Given("I navigate to the login URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 16
+ testRunner.And("I enter valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Add my pickle", new string[] {
+                "dur"}, SourceLine=18)]
+        public virtual void AddMyPickle()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add my pickle", new string[] {
+                        "dur"});
+#line 19
+this.ScenarioSetup(scenarioInfo);
+#line 20
+ testRunner.Given("I navigate to the login URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 21
  testRunner.And("I enter valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -111,11 +127,11 @@ this.ScenarioSetup(scenarioInfo);
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add to login", @__tags);
-#line 20
+#line 25
 this.ScenarioSetup(scenarioInfo);
-#line 21
+#line 26
  testRunner.Given("I navigate to the login URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 22
+#line 27
  testRunner.And("I enter valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -123,20 +139,20 @@ this.ScenarioSetup(scenarioInfo);
         
         [TechTalk.SpecRun.ScenarioAttribute("Add to login, 2", new string[] {
                 "mytag",
-                "someTag"}, SourceLine=25)]
+                "someTag"}, SourceLine=30)]
         public virtual void AddToLogin_2()
         {
-#line 20
+#line 25
 this.AddToLogin("2", ((string[])(null)));
 #line hidden
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Add to login, 3", new string[] {
                 "mytag",
-                "someTag"}, SourceLine=25)]
+                "someTag"}, SourceLine=30)]
         public virtual void AddToLogin_3()
         {
-#line 20
+#line 25
 this.AddToLogin("3", ((string[])(null)));
 #line hidden
         }

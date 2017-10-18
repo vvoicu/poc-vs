@@ -46,12 +46,16 @@ namespace PoCTestProject.Com.Selenium
             else
                 webdriver.GetTestReportInstance().Log(Status.Pass, "Test ended with " + Status.Pass);
 
-            //write report to file
-            webdriver.Flush();
-
             //close driver
             webdriver.GetDriver().Quit();
         }
 
+        [After]
+        public void dataFlush()
+        {
+            //write report to file
+            webdriver.Flush();
+        }
+        
     }
 }

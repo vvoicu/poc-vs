@@ -1,6 +1,5 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
-using AventStack.ExtentReports.Reporter.Configuration;
 using BoDi;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -9,25 +8,27 @@ using OpenQA.Selenium.IE;
 using PoCTestProject.Com.Tools;
 using System;
 using System.Configuration;
+using System.Threading;
 using TechTalk.SpecFlow;
 
 namespace PoCTestProject.Com.Configs
 {
 
-    public class CWebDriver
+    public class CWebDriver 
     {
+
         private readonly IObjectContainer objectContainerPrivate;
 
         //Selenium Related properties
         private IWebDriver webdriver;
-        private static int itemCount = 0;
+        private int itemCount = 0;
 
         //ExtentReports Related properties
-        private static ExtentReports extentReports;
+        private ExtentReports extentReports;
         private ExtentHtmlReporter htmlReports;
+        //private static ExtentReports extentReports;
+        //private static ExtentHtmlReporter htmlReports;
         private ExtentTest testInstance;
-
-        public string GetTimestamp { get; private set; }
 
         public CWebDriver(IObjectContainer objectContainer)
         {
@@ -36,7 +37,10 @@ namespace PoCTestProject.Com.Configs
             //init webDriver
             webdriver = SetWebdriver();
 
+            //init reports
             SetReportsConfiguration();
+
+            //objectContainerPrivate.RegisterInstanceAs<IWebDriver>(webdriver);
         }
 
         public IWebDriver GetDriver()
@@ -59,7 +63,7 @@ namespace PoCTestProject.Com.Configs
         {
             if (ConfigurationManager.AppSettings["step.screenshot"].Contains("true"))
             {
-//                testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text), MediaEntityBuilder.CreateScreenCaptureFromPath(generateScreenshot()).Build());
+                //                testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text), MediaEntityBuilder.CreateScreenCaptureFromPath(generateScreenshot()).Build());
                 testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text));
 
                 testInstance.AddScreenCaptureFromPath(generateScreenshot());
@@ -71,19 +75,19 @@ namespace PoCTestProject.Com.Configs
             }
         }
 
-        internal void Flush()
+        public void Flush()
         {
             extentReports.Flush();
+            //extentReports = null;
         }
 
         private string generateScreenshot()
         {
-
             itemCount++;
             Screenshot ss = ((ITakesScreenshot)webdriver).GetScreenshot();
             string timeStamp = FormatUtils.GetTimestamp(DateTime.Now);
 
-            String shotName = itemCount + "-" + Constants.PICTURE_NAME + "-" + timeStamp + ".png";
+            String shotName = ScenarioContext.Current.ScenarioInfo.Title + "-" + itemCount + "-" + timeStamp + ".png";
             String shotNamePath = System.IO.Path.Combine(Constants.ReportPath, @shotName);
 
             ss.SaveAsFile(shotNamePath, ScreenshotImageFormat.Png);
@@ -115,19 +119,23 @@ namespace PoCTestProject.Com.Configs
 
         private void SetReportsConfiguration()
         {
-            //init Reports
-            htmlReports = new ExtentHtmlReporter(Constants.ExtentReportFile);
-            //htmlReports = new ExtentHtmlReporter(ScenarioContext.Current.ScenarioInfo.Title + "-" + Constants.ExtentReportFile);
-
             if (extentReports == null)
+            {
+                //init Reports
+                htmlReports = new ExtentHtmlReporter(Thread.CurrentThread.ManagedThreadId + "-" + FormatUtils.GetTimestamp(DateTime.Now) + Constants.ExtentReportFile);
+                //htmlReports = new ExtentHtmlReporter(ScenarioContext.Current.ScenarioInfo.Title + "-" + Constants.ExtentReportFile);
+                //htmlReports = new ExtentHtmlReporter(Constants.ExtentReportFile);
+                htmlReports.AppendExisting = true;
                 extentReports = new ExtentReports();
 
-            extentReports.AttachReporter(htmlReports);
+                extentReports.AttachReporter(htmlReports);
 
-            htmlReports.Configuration().ReportName = "PoC x PRMA " + DateTime.Now;
-            htmlReports.Configuration().DocumentTitle = "PRMA Test Report";
-            htmlReports.Configuration().Theme = Theme.Dark;
+                //htmlReports.Configuration().ReportName = "PoC x PRMA " + DateTime.Now;
+                //htmlReports.Configuration().DocumentTitle = "PRMA Test Report";
+                //htmlReports.Configuration().Theme = Theme.Dark;
+            }
 
+           
         }
     }
 }
