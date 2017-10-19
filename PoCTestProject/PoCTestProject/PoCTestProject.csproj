@@ -118,6 +118,7 @@
     <Compile Include="Com\Configs\Legacy\CWebDriver302.cs" />
     <Compile Include="Com\Configs\Legacy\CWebDriver240.cs" />
     <Compile Include="Com\Configs\FormatUtils.cs" />
+    <Compile Include="Com\Configs\SingleReport.cs" />
     <Compile Include="Com\Sites\Prma\Pages\LoginPage.cs" />
     <Compile Include="Com\Sites\Prma\Steps\PrmaLoginSteps.cs" />
     <Compile Include="Com\Tools\Constants.cs" />
