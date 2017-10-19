@@ -63,98 +63,24 @@ namespace PoCTestProject.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Add two numbers", new string[] {
-                "retry:0",
+        [TechTalk.SpecRun.ScenarioAttribute("1Add two numbers", new string[] {
                 "mytag",
-                "yourtag"}, SourceLine=7)]
-        public virtual void AddTwoNumbers()
+                "yourtag"}, SourceLine=6)]
+        public virtual void _1AddTwoNumbers()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", new string[] {
-                        "retry:0",
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1Add two numbers", new string[] {
                         "mytag",
                         "yourtag"});
-#line 8
+#line 7
 this.ScenarioSetup(scenarioInfo);
-#line 9
+#line 8
  testRunner.Given("I navigate to the login URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 10
+#line 9
  testRunner.And("I enter valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 11
+#line 10
  testRunner.When("I go to heatmap", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             this.ScenarioCleanup();
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Steel Request", new string[] {
-                "Dia"}, SourceLine=13)]
-        public virtual void SteelRequest()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Steel Request", new string[] {
-                        "Dia"});
-#line 14
-this.ScenarioSetup(scenarioInfo);
-#line 15
- testRunner.Given("I navigate to the login URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 16
- testRunner.And("I enter valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Add my pickle", new string[] {
-                "dur"}, SourceLine=18)]
-        public virtual void AddMyPickle()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add my pickle", new string[] {
-                        "dur"});
-#line 19
-this.ScenarioSetup(scenarioInfo);
-#line 20
- testRunner.Given("I navigate to the login URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 21
- testRunner.And("I enter valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        public virtual void AddToLogin(string _1, string[] exampleTags)
-        {
-            string[] @__tags = new string[] {
-                    "mytag",
-                    "someTag"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add to login", @__tags);
-#line 25
-this.ScenarioSetup(scenarioInfo);
-#line 26
- testRunner.Given("I navigate to the login URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 27
- testRunner.And("I enter valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Add to login, 2", new string[] {
-                "mytag",
-                "someTag"}, SourceLine=30)]
-        public virtual void AddToLogin_2()
-        {
-#line 25
-this.AddToLogin("2", ((string[])(null)));
-#line hidden
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Add to login, 3", new string[] {
-                "mytag",
-                "someTag"}, SourceLine=30)]
-        public virtual void AddToLogin_3()
-        {
-#line 25
-this.AddToLogin("3", ((string[])(null)));
-#line hidden
         }
         
         [TechTalk.SpecRun.TestRunCleanup()]

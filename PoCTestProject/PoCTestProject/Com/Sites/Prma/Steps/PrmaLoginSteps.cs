@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using PoCTestProject.Com.Configs;
 using PoCTestProject.Com.Sites.Prma.Pages;
+using PoCTestProject.Com.Tools;
 using System;
 using System.Configuration;
 using TechTalk.SpecFlow;
@@ -18,15 +19,18 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
             webdriver = driver;
         }
 
+        [Retry(0)]
         [Given(@"I navigate to the login URL")]
         public void GivenINavigateToTheLoginURL()
         {
             webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
             var baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
             webdriver.GetDriver().Navigate().GoToUrl(baseUrl + "/login");
+            RetryAttribute a = null;
            
         }
-        
+
+        [Retry(0)]
         [Given(@"I enter valid credentials")]
         public void GivenIEnterValidCredentials()
         {
@@ -40,6 +44,7 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
             
         }
 
+        [Retry(0)]
         [When(@"I go to heatmap")]
         public void WhenIGoToHeatmap()
         {
