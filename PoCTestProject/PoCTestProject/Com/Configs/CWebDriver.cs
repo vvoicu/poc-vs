@@ -1,5 +1,6 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
+using AventStack.ExtentReports.Reporter.Configuration;
 using BoDi;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -16,7 +17,6 @@ namespace PoCTestProject.Com.Configs
 
     public class CWebDriver 
     {
-
         private readonly IObjectContainer objectContainerPrivate;
 
         //Selenium Related properties
@@ -24,10 +24,8 @@ namespace PoCTestProject.Com.Configs
         private int itemCount = 0;
 
         //ExtentReports Related properties
-        private ExtentReports extentReports;
-        private ExtentHtmlReporter htmlReports;
-        //private static ExtentReports extentReports;
-        //private static ExtentHtmlReporter htmlReports;
+        private static ExtentReports extentReports;
+        private static ExtentHtmlReporter htmlReports;
         private ExtentTest testInstance;
 
         public CWebDriver(IObjectContainer objectContainer)
@@ -43,6 +41,12 @@ namespace PoCTestProject.Com.Configs
             //objectContainerPrivate.RegisterInstanceAs<IWebDriver>(webdriver);
         }
 
+        internal ExtentReports GetExtentReport()
+        {
+            //return SingleReport.GetInstance();
+            return extentReports;
+        }
+
         public IWebDriver GetDriver()
         {
             return webdriver;
@@ -51,7 +55,7 @@ namespace PoCTestProject.Com.Configs
         public void CreateTest(String testName)
         {
             testInstance = extentReports.CreateTest(testName);
-            // testInstance = extentReports.CreateTest(testName).CreateNode(DateTime.Now.ToString());
+            //testInstance = extentReports.CreateTest("One").CreateNode(testName);
         }
 
         public ExtentTest GetTestReportInstance()
@@ -63,22 +67,18 @@ namespace PoCTestProject.Com.Configs
         {
             if (ConfigurationManager.AppSettings["step.screenshot"].Contains("true"))
             {
-                //                testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text), MediaEntityBuilder.CreateScreenCaptureFromPath(generateScreenshot()).Build());
                 testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text));
-
                 testInstance.AddScreenCaptureFromPath(generateScreenshot());
             }
             else
             {
                 testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text));
-                //testInstance.AddScreenCaptureFromPath(generateScreenshot());
             }
         }
 
         public void Flush()
         {
             extentReports.Flush();
-            //extentReports = null;
         }
 
         private string generateScreenshot()
@@ -122,20 +122,17 @@ namespace PoCTestProject.Com.Configs
             if (extentReports == null)
             {
                 //init Reports
-                htmlReports = new ExtentHtmlReporter(Thread.CurrentThread.ManagedThreadId + "-" + FormatUtils.GetTimestamp(DateTime.Now) + Constants.ExtentReportFile);
-                //htmlReports = new ExtentHtmlReporter(ScenarioContext.Current.ScenarioInfo.Title + "-" + Constants.ExtentReportFile);
                 //htmlReports = new ExtentHtmlReporter(Constants.ExtentReportFile);
+                htmlReports = new ExtentHtmlReporter(Thread.CurrentThread.ManagedThreadId + "-" + FormatUtils.GetTimestamp(DateTime.Now) + "-" + Constants.ExtentReportFile);
                 htmlReports.AppendExisting = true;
                 extentReports = new ExtentReports();
 
                 extentReports.AttachReporter(htmlReports);
 
-                //htmlReports.Configuration().ReportName = "PoC x PRMA " + DateTime.Now;
-                //htmlReports.Configuration().DocumentTitle = "PRMA Test Report";
-                //htmlReports.Configuration().Theme = Theme.Dark;
+                htmlReports.Configuration().ReportName = "PoC x PRMA " + DateTime.Now;
+                htmlReports.Configuration().DocumentTitle = "PRMA Test Report";
+                htmlReports.Configuration().Theme = Theme.Dark;
             }
-
-           
         }
     }
 }
