@@ -78,11 +78,11 @@ this.ScenarioSetup(scenarioInfo);
 #line 10
  testRunner.When("I navigate to the heatmap URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
- testRunner.And("I select a square with \'2\' requirements", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I select a coloured cell", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
  testRunner.And("I check the number of each type of requirement", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 13
- testRunner.And("I click on the total number of requirements link in \'Evidence synthesis\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I click on the total number of requirements link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 14
  testRunner.Then("I am redirected to the requirements page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 15

@@ -2,9 +2,6 @@
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PoCTestProject.Com.Sites.Prma.Pages
 {
@@ -17,30 +14,44 @@ namespace PoCTestProject.Com.Sites.Prma.Pages
             webdriver = driver;
         }
 
-        private By userNameInput = By.CssSelector("input[name='email']");
-        private By userPassInput = By.CssSelector("input[name='password']");
-        private By loginButton = By.CssSelector("button");
+        // cell locators
+        private By cellListLocator = By.CssSelector(".data-cells .cell");
+        private By statusRedLocator = By.CssSelector(".status-red");
+        private By statusAmberLocator = By.CssSelector(".status-amber");
+        private By statusGreenLocator = By.CssSelector(".status-green");
+        private By statusNoneLocator = By.CssSelector(".status-none");
+        private By statusUnassignedLocator = By.CssSelector(".status-unassigned");
+
+        // cell tooltip locators
+        private By cellTooltipLocator = By.CssSelector(".heatmap-data-cell-tooltip");
+        private By tooltipHeaderLocator = By.CssSelector(".heatmap-data-cell-tooltip .header");
 
 
-        public void InputUserName(String userName)
+        public void ClickOnColouredCell()
         {
-            new WebDriverWait(webdriver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(userNameInput));
+            new WebDriverWait(webdriver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(cellListLocator));
+            IList<IWebElement> cellList = webdriver.FindElements(cellListLocator);
 
-            webdriver.FindElement(userNameInput).SendKeys(userName);
+            foreach (IWebElement cell in cellList)
+            {
+                if (!cell.GetAttribute("class").Contains("empty"))
+                {
+                    cell.Click();
+                    if (!cell.FindElement(statusNoneLocator).GetAttribute("style").Contains("height: 100%"))
+                    {
+                        break;
+                    }
+                }
+            }
         }
 
-        public void InputUserPass(String userPass)
+        public void GetCellInformation()
         {
-            new WebDriverWait(webdriver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(userPassInput));
+            new WebDriverWait(webdriver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(cellTooltipLocator));
 
-            webdriver.FindElement(userPassInput).SendKeys(userPass);
         }
 
-        public void ClickLogin()
-        {
-            new WebDriverWait(webdriver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(loginButton));
 
-            webdriver.FindElement(loginButton).Click();
-        }
+
     }
 }

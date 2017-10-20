@@ -1,9 +1,6 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
 using PoCTestProject.Com.Configs;
 using PoCTestProject.Com.Sites.Prma.Pages;
-using PoCTestProject.Com.Tools;
-using System;
 using System.Configuration;
 using TechTalk.SpecFlow;
 
@@ -13,6 +10,7 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
     public class PrmaLoginSteps
     {
         private CWebDriver webdriver;
+        LoginPage loginPage;
 
         public PrmaLoginSteps(CWebDriver driver)
         {
@@ -31,9 +29,10 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         public void GivenIEnterValidCredentials()
         {
             webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+            loginPage = new LoginPage(webdriver.GetDriver());
+
             var userName = ConfigurationManager.AppSettings["adminUser"];
             var userPass = ConfigurationManager.AppSettings["adminPass"];
-            LoginPage loginPage = new LoginPage(webdriver.GetDriver());
             loginPage.InputUserName(userName);
             loginPage.InputUserPass(userPass);
             loginPage.ClickLogin();

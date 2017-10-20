@@ -1,5 +1,5 @@
 ﻿using PoCTestProject.Com.Configs;
-using System;
+using PoCTestProject.Com.Sites.Prma.Pages;
 using System.Configuration;
 using TechTalk.SpecFlow;
 
@@ -9,6 +9,7 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
     public class HeatmapSteps
     {
         private CWebDriver webdriver;
+        HeatmapPage heatmapPage;
 
         public HeatmapSteps(CWebDriver driver)
         {
@@ -23,34 +24,34 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
             webdriver.GetDriver().Navigate().GoToUrl(baseUrl + "/heatmap");
         }
 
-        [When(@"I select a square with '(.*)' requirements")]
-        public void WhenISelectASquareWithRequirements(int p0)
+        [When(@"I select a coloured cell")]
+        public void WhenISelectAColouredCell(int requirementsNumber)
         {
-            ScenarioContext.Current.Pending();
+            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+            heatmapPage = new HeatmapPage(webdriver.GetDriver());
+            heatmapPage.ClickOnColouredCell();
         }
         
         [When(@"I check the number of each type of requirement")]
         public void WhenICheckTheNumberOfEachTypeOfRequirement()
         {
-            ScenarioContext.Current.Pending();
+            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+            heatmapPage = new HeatmapPage(webdriver.GetDriver());
         }
         
-        [When(@"I click on the total number of requirements link in 'Evidence synthesis'")]
-        public void WhenIClickOnTheTotalNumberOfRequirementsLinkIn()
+        [When(@"I click on the total number of requirements link")]
+        public void WhenIClickOnTheTotalNumberOfRequirementsLink()
         {
-            ScenarioContext.Current.Pending();
+            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+            heatmapPage = new HeatmapPage(webdriver.GetDriver());
         }
         
         [Then(@"I am redirected to the requirements page")]
         public void ThenIAmRedirectedToTheRequirementsPage()
         {
-            ScenarioContext.Current.Pending();
+            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+            heatmapPage = new HeatmapPage(webdriver.GetDriver());
         }
-        
-        [Then(@"each requirement is displayed with the correct colour")]
-        public void ThenEachRequirementIsDisplayedWithTheCorrectColour()
-        {
-            ScenarioContext.Current.Pending();
-        }
+
     }
 }
