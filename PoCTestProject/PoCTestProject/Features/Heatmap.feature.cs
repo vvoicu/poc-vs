@@ -63,6 +63,34 @@ namespace PoCTestProject.Features
             testRunner.CollectScenarioErrors();
         }
         
+        [TechTalk.SpecRun.ScenarioAttribute("Heatmap", new string[] {
+                "mytag"}, SourceLine=6)]
+        public virtual void Heatmap()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Heatmap", new string[] {
+                        "mytag"});
+#line 7
+this.ScenarioSetup(scenarioInfo);
+#line 8
+ testRunner.Given("I navigate to the login URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 9
+ testRunner.And("I enter valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 10
+ testRunner.When("I navigate to the heatmap URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 11
+ testRunner.And("I select a square with \'2\' requirements", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 12
+ testRunner.And("I check the number of each type of requirement", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 13
+ testRunner.And("I click on the total number of requirements link in \'Evidence synthesis\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 14
+ testRunner.Then("I am redirected to the requirements page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 15
+ testRunner.And("each requirement is displayed with the correct colour", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
         [TechTalk.SpecRun.TestRunCleanup()]
         public virtual void TestRunCleanup()
         {
