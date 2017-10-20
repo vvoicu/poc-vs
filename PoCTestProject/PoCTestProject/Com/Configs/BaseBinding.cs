@@ -3,6 +3,7 @@ using BoDi;
 using PoCTestProject.Com.Configs;
 using System;
 using System.Diagnostics;
+using System.Threading;
 using TechTalk.SpecFlow;
 
 namespace PoCTestProject.Com.Selenium
@@ -14,6 +15,7 @@ namespace PoCTestProject.Com.Selenium
         private readonly IObjectContainer objectContainerPrivate;
         private CWebDriver webdriver;
         private static ExtentReports report;
+        static int concurrentThreads = 0;
 
         public BaseBinding(IObjectContainer objectContainer)
         {
@@ -52,20 +54,25 @@ namespace PoCTestProject.Com.Selenium
             //close driver
             webdriver.GetDriver().Quit();
 
+
+            int threadsRemaining = Interlocked.Increment(ref concurrentThreads);
+
+
             ProcessThreadCollection currentThreads = Process.GetCurrentProcess().Threads;
-            //System.Diagnostics.Debug.WriteLine("----*****----Here: " + currentThreads.Count);
+            foreach(Process processNow in currentThreads)
+            {
+                Console.WriteLine("Process: {0}", Process.GetProcessById(123));
+
+            }
+
+
+            System.Diagnostics.Debug.WriteLine("----*****----Here: " + currentThreads.Count);
             Trace.WriteLine("----*****----Here: " + currentThreads.Count);
-
-           // if (currentThreads.Count == 1)
-                //write report to file
-                report.Flush();
+            Console.WriteLine("----*****----currentThreads: {0}", currentThreads.Count);
+            Console.WriteLine("----*****----threadsRemaining: {0}", threadsRemaining);
+            // if (currentThreads.Count == 1)
+            //write report to file
+            report.Flush();
         }
-
-        //[After]
-        //public static void dataFlush()
-        //{
-
-        //}
-
     }
 }
