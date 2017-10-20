@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PoCTestProject.Com.Sites.Prma.Pages
 {
@@ -32,17 +33,17 @@ namespace PoCTestProject.Com.Sites.Prma.Pages
             new WebDriverWait(webdriver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(cellListLocator));
             IList<IWebElement> cellList = webdriver.FindElements(cellListLocator);
 
-            foreach (IWebElement cell in cellList)
-            {
-                if (!cell.GetAttribute("class").Contains("empty"))
-                {
-                    cell.Click();
-                    if (!cell.FindElement(statusNoneLocator).GetAttribute("style").Contains("height: 100%"))
-                    {
-                        break;
-                    }
-                }
-            }
+            //foreach (IWebElement cell in cellList)
+            //{
+            //    if (!(cell.GetAttribute("class").Contains("empty") || cell.FindElement(statusNoneLocator).GetAttribute("style").Contains("height: 100%")))
+            //    {
+            //        cell.Click();
+            //    }
+            //}
+
+            cellList.Where(cell => !cell.GetAttribute("class").Contains("empty") || 
+                            !cell.FindElement(statusNoneLocator).GetAttribute("style").Contains("height: 100%")).
+                            ToList().ForEach(cell => cell.Click());
         }
 
         public void GetCellInformation()
