@@ -17,14 +17,15 @@ namespace PoCTestProject.Com.Sites.Prma.Pages
 
         public By navigationContainer = By.CssSelector("div.sidemenu");
 
-        private void clickOnMenu(String menuLabel)
+        private void clickOnMenu(string menuLabel)
         {
             new WebDriverWait(webdriver, TimeSpan.FromSeconds(20)).Until(ExpectedConditions.ElementIsVisible(navigationContainer));
 
-            IList<IWebElement> menuList = webdriver.FindElements(By.CssSelector("div.sidemenu div.sidemenu div.section"));
+            IList<IWebElement> menuList = webdriver.FindElements(By.CssSelector("div.sidemenu div.clickable"));
 
             foreach (IWebElement menuNow in menuList)
             {
+                Console.WriteLine(menuNow.Text);
                 if (menuNow.Text.ToLower().Contains(menuLabel.ToLower()))
                 {
                     menuNow.Click();
