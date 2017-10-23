@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TestProfile xmlns="http://www.specflow.org/schemas/plus/TestProfile/1.5">
   <Settings projectName="PoCTestProject" projectId="{2c4a2e83-b7e8-4bab-89fa-8a2213c002a3}" />
-  <Execution testThreadCount="4" testSchedulingMode="Sequential" />
+  <Execution testThreadCount="1" testSchedulingMode="Sequential" stopAfterFailures="0" retryFor="Failing" retryCount="0"/>
   <!-- stopAfterFailures="3" For collecting by a SpecRun server update and enable the following element. For using the 
       collected statistics, set testSchedulingMode="Adaptive" or "Sequential" attribute on the <Execution> element.
     <Server serverUrl="http://specrunserver:6365" publishResults="true" />
