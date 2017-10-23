@@ -30,17 +30,10 @@ namespace PoCTestProject.Com.Sites.Prma.Pages
 
         public void ClickOnColouredCell()
         {
+            new WebDriverWait(webdriver, TimeSpan.FromSeconds(20)).Until(ExpectedConditions.ElementIsVisible(By.CssSelector("div[ng-show='heatmap.showSummaries']")));
+
             new WebDriverWait(webdriver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(cellListLocator));
             IList<IWebElement> cellList = webdriver.FindElements(cellListLocator);
-
-            //foreach (IWebElement cell in cellList)
-            //{
-            //    if (!(cell.GetAttribute("class").Contains("empty") || cell.FindElement(statusNoneLocator).GetAttribute("style").Contains("height: 100%")))
-            //    {
-            //        cell.Click();
-            //    }
-            //}
-
             cellList.Where(cell => !cell.GetAttribute("class").Contains("empty") || 
                             !cell.FindElement(statusNoneLocator).GetAttribute("style").Contains("height: 100%")).
                             ToList().ForEach(cell => cell.Click());

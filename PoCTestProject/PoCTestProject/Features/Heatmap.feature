@@ -3,12 +3,12 @@
 	As a math idiot
 	I want to be told the sum of two numbers
 
-@mytag
+@prma @heatmap
 Scenario: Heatmap
 	Given I navigate to the login URL
 	And I enter valid credentials
-	When I navigate to the heatmap URL
-	And I select a coloured cell
+	When I navigate to the heatmap
+	And I select a coloured cell 'blue'
 	And I check the number of each type of requirement
 	And I click on the total number of requirements link
 	Then I am redirected to the requirements page

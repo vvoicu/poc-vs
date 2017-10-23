@@ -64,11 +64,13 @@ namespace PoCTestProject.Features
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Heatmap", new string[] {
-                "mytag"}, SourceLine=6)]
+                "prma",
+                "heatmap"}, SourceLine=6)]
         public virtual void Heatmap()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Heatmap", new string[] {
-                        "mytag"});
+                        "prma",
+                        "heatmap"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
@@ -76,9 +78,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 9
  testRunner.And("I enter valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
- testRunner.When("I navigate to the heatmap URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I navigate to the heatmap", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
- testRunner.And("I select a coloured cell", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I select a coloured cell \'blue\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
  testRunner.And("I check the number of each type of requirement", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 13

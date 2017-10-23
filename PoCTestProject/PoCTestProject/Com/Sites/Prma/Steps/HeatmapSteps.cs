@@ -24,8 +24,8 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
             webdriver.GetDriver().Navigate().GoToUrl(baseUrl + "/heatmap");
         }
 
-        [When(@"I select a coloured cell")]
-        public void WhenISelectAColouredCell(int requirementsNumber)
+        [When(@"I select a coloured cell '(.*)'")]
+        public void WhenISelectAColouredCell(string requirementsNumber)
         {
             webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
             heatmapPage = new HeatmapPage(webdriver.GetDriver());
