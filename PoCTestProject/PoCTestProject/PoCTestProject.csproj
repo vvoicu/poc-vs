@@ -110,6 +110,7 @@
     <Compile Include="Com\Configs\Legacy\CWebDriver302.cs" />
     <Compile Include="Com\Configs\Legacy\CWebDriver240.cs" />
     <Compile Include="Com\Configs\FormatUtils.cs" />
+    <Compile Include="Com\DataModels\HeatmapCellModel.cs" />
     <Compile Include="Com\Sites\Prma\Pages\HeatmapPage.cs" />
     <Compile Include="Com\Sites\Prma\Pages\LoginPage.cs" />
     <Compile Include="Com\Sites\Prma\Pages\NavigationPage.cs" />

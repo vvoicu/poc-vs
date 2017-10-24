@@ -9,7 +9,7 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
     public class HeatmapSteps
     {
         private CWebDriver webdriver;
-        HeatmapPage heatmapPage;
+        HeatmapListPage heatmapPage;
 
         public HeatmapSteps(CWebDriver driver)
         {
@@ -28,29 +28,39 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         public void WhenISelectAColouredCell(string requirementsNumber)
         {
             webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
-            heatmapPage = new HeatmapPage(webdriver.GetDriver());
-            heatmapPage.ClickOnColouredCell();
+            heatmapPage = new HeatmapListPage(webdriver.GetDriver());
+            //heatmapPage.ClickOnColouredCell();
+            heatmapPage.GrabCellsColorsData();
         }
-        
+
+        [When(@"I select a coloured cell with '(.*)' colors")]
+        public void WhenISelectAColouredCellWithColors(int colorCount)
+        {
+            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+            heatmapPage = new HeatmapListPage(webdriver.GetDriver());
+            heatmapPage.ClickOnColouredCell(colorCount);
+        }
+
+
         [When(@"I check the number of each type of requirement")]
         public void WhenICheckTheNumberOfEachTypeOfRequirement()
         {
             webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
-            heatmapPage = new HeatmapPage(webdriver.GetDriver());
+            heatmapPage = new HeatmapListPage(webdriver.GetDriver());
         }
         
         [When(@"I click on the total number of requirements link")]
         public void WhenIClickOnTheTotalNumberOfRequirementsLink()
         {
             webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
-            heatmapPage = new HeatmapPage(webdriver.GetDriver());
+            heatmapPage = new HeatmapListPage(webdriver.GetDriver());
         }
         
         [Then(@"I am redirected to the requirements page")]
         public void ThenIAmRedirectedToTheRequirementsPage()
         {
             webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
-            heatmapPage = new HeatmapPage(webdriver.GetDriver());
+            heatmapPage = new HeatmapListPage(webdriver.GetDriver());
         }
 
     }
