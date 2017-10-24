@@ -23,8 +23,15 @@ namespace PoCTestProject.Com.Sites.Prma.Pages
         public int GrabItemCount()
         {
             int result = 0;
-            new WebDriverWait(webdriver, TimeSpan.FromSeconds(20)).Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.CssSelector("tbody tr")));
+
+            //wait for page to load
+            IWait<IWebDriver> wait = new OpenQA.Selenium.Support.UI.WebDriverWait(webdriver, TimeSpan.FromSeconds(30.00));
+            wait.Until(driver1 => ((IJavaScriptExecutor)webdriver).ExecuteScript("return document.readyState").Equals("complete"));
             new WebDriverWait(webdriver, TimeSpan.FromSeconds(20)).Until(ExpectedConditions.ElementIsVisible(countText));
+
+            //test moves to fast in some instances, need to wait for the field to be populated with the text
+            System.Threading.Thread.Sleep(2000);
+
 
             String countRawText = webdriver.FindElement(countText).Text;
 

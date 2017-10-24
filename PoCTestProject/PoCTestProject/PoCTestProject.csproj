@@ -116,8 +116,7 @@
     <Compile Include="Com\Sites\Prma\Pages\Heatmap\HeatmapTooltipPage.cs" />
     <Compile Include="Com\Sites\Prma\Pages\LoginPage.cs" />
     <Compile Include="Com\Sites\Prma\Pages\NavigationPage.cs" />
-    <Compile Include="Com\Sites\Prma\Pages\RequirementsListPage.cs" />
-    <Compile Include="Com\Sites\Prma\Steps\Heatmap\boolean.cs" />
+    <Compile Include="Com\Sites\Prma\Pages\Heatmap\Requirements\RequirementsListPage.cs" />
     <Compile Include="Com\Sites\Prma\Steps\Heatmap\HeatmapSteps.cs" />
     <Compile Include="Com\Sites\Prma\Steps\NavigationSteps.cs" />
     <Compile Include="Com\Sites\Prma\Steps\PrmaLoginSteps.cs" />
