@@ -24,8 +24,8 @@ namespace PoCTestProject.Com.Configs
         private int itemCount = 0;
 
         //ExtentReports Related properties
-        private ExtentReports extentReports;
-        private ExtentHtmlReporter htmlReports;
+        private static ExtentReports extentReports;
+        private static ExtentHtmlReporter htmlReports;
         private ExtentTest testInstance;
 
         public CWebDriver(IObjectContainer objectContainer)

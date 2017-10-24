@@ -4,8 +4,6 @@ using PoCTestProject.Com.DataModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PoCTestProject.Com.Sites.Prma.Pages.Heatmap
 {
@@ -20,18 +18,20 @@ namespace PoCTestProject.Com.Sites.Prma.Pages.Heatmap
 
         private By tooltipContainer = By.CssSelector(".heatmap-data-cell-tooltip");
 
+        /// <summary>
+        /// Once you have opened a tooltip, details will be extracted from the positive statuses. The method will not gather the tooltip summary like totals, title and such
+        /// </summary>
+        /// <returns></returns>
         public IList<HeatmapTooltipModel> GrabTooltipData()
         {
             IList<HeatmapTooltipModel> results = new List<HeatmapTooltipModel>();
 
             new WebDriverWait(webdriver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(tooltipContainer));
-
             IList<IWebElement> positiveItems = webdriver.FindElements(By.CssSelector(".heatmap-data-cell-tooltip li[ng-repeat*='positiveStatuses']"));
 
             //tooltip row level data
             foreach(IWebElement currentItem in positiveItems)
             {
-                
                 IList<IWebElement> itemDetails = currentItem.FindElements(By.CssSelector("a"));
 
                 HeatmapTooltipModel currentResult = new HeatmapTooltipModel();

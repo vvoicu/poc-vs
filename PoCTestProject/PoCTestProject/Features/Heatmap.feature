@@ -10,6 +10,3 @@ Scenario: Heatmap
 	When I navigate to the heatmap
 	And I select a coloured cell with '2' colors
 	And I check the number of each type of requirement
-	#And I click on the total number of requirements link
-	#Then I am redirected to the requirements page
-	#And each requirement is displayed with the correct colour

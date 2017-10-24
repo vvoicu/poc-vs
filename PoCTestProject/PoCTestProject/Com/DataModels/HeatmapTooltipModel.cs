@@ -16,5 +16,9 @@ namespace PoCTestProject.Com.DataModels
         public string vulnerabilityText;
         public string vulnerabilityLink;
 
+        public string ToString()
+        {
+            return "color: " + color + ", colorText: " + colorText + ", colorLink: " + colorLink + ", vulnerabilityText: " + vulnerabilityText + ", vulnerabilityLink: " + vulnerabilityLink;
+        }
     }
 }

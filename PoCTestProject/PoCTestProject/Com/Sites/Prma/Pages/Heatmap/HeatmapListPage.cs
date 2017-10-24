@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using PoCTestProject.Com.DataModels;
+using PoCTestProject.Com.Sites.Prma.Steps;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,9 +49,9 @@ namespace PoCTestProject.Com.Sites.Prma.Pages
             }
         }
 
-        internal void ClickOnColouredCell(int colorCount)
+        internal Boolean ClickOnColouredCell(int colorCount)
         {
-
+            Boolean isFound = false;
             new WebDriverWait(webdriver, TimeSpan.FromSeconds(20)).Until(ExpectedConditions.ElementIsVisible(By.CssSelector("div[ng-show='heatmap.showSummaries']")));
             new WebDriverWait(webdriver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(cellListLocator));
             IList<IWebElement> cellList = webdriver.FindElements(cellListLocator);
@@ -62,9 +63,12 @@ namespace PoCTestProject.Com.Sites.Prma.Pages
                 if(itemData.CalculateVisibleColors() == colorCount)
                 {
                     elementNow.Click();
+                    isFound = true;
                     break;
                 }
             }
+
+            return isFound;
         }
 
         public HeatmapCellModel GetCellInformation(IWebElement cell)
