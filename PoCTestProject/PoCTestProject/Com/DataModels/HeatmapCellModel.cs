@@ -12,7 +12,8 @@ namespace PoCTestProject.Com.DataModels
 
         public int CalculateVisibleColors()
         {
-            foreach(KeyValuePair < string, string> entry in colors)
+            numberOfColors = 0;
+            foreach (KeyValuePair < string, string> entry in colors)
             {
                 Console.WriteLine("{0} : {1}", entry.Key, entry.Value);
                 if(Convert.ToDouble(entry.Value) != 0.00)

@@ -1,6 +1,5 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
-using AventStack.ExtentReports.Reporter.Configuration;
 using BoDi;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -131,7 +130,7 @@ namespace PoCTestProject.Com.Configs
 
                 htmlReports.Configuration().ReportName = "PoC x PRMA " + DateTime.Now;
                 htmlReports.Configuration().DocumentTitle = "PRMA Test Report";
-                htmlReports.Configuration().Theme = Theme.Dark;
+                //htmlReports.Configuration().Theme = Theme.Dark;
             }
         }
     }

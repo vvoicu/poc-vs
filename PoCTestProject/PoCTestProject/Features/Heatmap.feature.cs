@@ -80,7 +80,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 10
  testRunner.When("I navigate to the heatmap", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
- testRunner.And("I select a coloured cell with \'2\' colors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I select a coloured cell with \'3\' colors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
  testRunner.And("I check the number of each requirement", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
