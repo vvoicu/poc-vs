@@ -5,7 +5,6 @@ using PoCTestProject.Com.Sites.Prma.Pages;
 using PoCTestProject.Com.Sites.Prma.Pages.Heatmap;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using TechTalk.SpecFlow;
 
 namespace PoCTestProject.Com.Sites.Prma.Steps
@@ -42,8 +41,8 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         }
 
 
-        [When(@"I check the number of each type of requirement")]
-        public void WhenICheckTheNumberOfEachTypeOfRequirement()
+        [When(@"I check the number of each requirement")]
+        public void WhenICheckTheNumberOfEachRequirement()
         {
             webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
             heatmapTooltipPage = new HeatmapTooltipPage(webdriver.GetDriver());

@@ -82,7 +82,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 11
  testRunner.And("I select a coloured cell with \'2\' colors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
- testRunner.And("I check the number of each type of requirement", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I check the number of each requirement", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

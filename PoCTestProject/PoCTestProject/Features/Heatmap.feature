@@ -9,4 +9,4 @@ Scenario: Heatmap
 	And I enter valid credentials
 	When I navigate to the heatmap
 	And I select a coloured cell with '2' colors
-	And I check the number of each type of requirement
+	And I check the number of each requirement
