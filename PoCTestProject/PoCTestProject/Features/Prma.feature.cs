@@ -63,12 +63,12 @@ namespace PoCTestProject.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("1Add two numbers", new string[] {
+        [TechTalk.SpecRun.ScenarioAttribute("1 Add two numbers", new string[] {
                 "mytag",
                 "yourtag"}, SourceLine=6)]
         public virtual void _1AddTwoNumbers()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1Add two numbers", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 Add two numbers", new string[] {
                         "mytag",
                         "yourtag"});
 #line 7
@@ -83,11 +83,11 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("2Steel Request", new string[] {
+        [TechTalk.SpecRun.ScenarioAttribute("2 Steel Request", new string[] {
                 "Dia"}, SourceLine=12)]
         public virtual void _2SteelRequest()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2Steel Request", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2 Steel Request", new string[] {
                         "Dia"});
 #line 13
 this.ScenarioSetup(scenarioInfo);
@@ -99,11 +99,11 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("3Add my pickle", new string[] {
+        [TechTalk.SpecRun.ScenarioAttribute("3 Add my pickle", new string[] {
                 "dur"}, SourceLine=17)]
         public virtual void _3AddMyPickle()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3Add my pickle", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3 Add my pickle", new string[] {
                         "dur"});
 #line 18
 this.ScenarioSetup(scenarioInfo);
@@ -115,7 +115,7 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        public virtual void _4AddToLogin(string _1, string[] exampleTags)
+        public virtual void _4DataDrivenAddToLogin(string head, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "mytag",
@@ -124,7 +124,7 @@ this.ScenarioSetup(scenarioInfo);
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4Add to login", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4 Data Driven Add to login", @__tags);
 #line 24
 this.ScenarioSetup(scenarioInfo);
 #line 25
@@ -135,23 +135,23 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("4Add to login, 2", new string[] {
+        [TechTalk.SpecRun.ScenarioAttribute("4 Data Driven Add to login, 2", new string[] {
                 "mytag",
                 "someTag"}, SourceLine=29)]
-        public virtual void _4AddToLogin_2()
+        public virtual void _4DataDrivenAddToLogin_2()
         {
 #line 24
-this._4AddToLogin("2", ((string[])(null)));
+this._4DataDrivenAddToLogin("2", ((string[])(null)));
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("4Add to login, 3", new string[] {
+        [TechTalk.SpecRun.ScenarioAttribute("4 Data Driven Add to login, 3", new string[] {
                 "mytag",
                 "someTag"}, SourceLine=29)]
-        public virtual void _4AddToLogin_3()
+        public virtual void _4DataDrivenAddToLogin_3()
         {
 #line 24
-this._4AddToLogin("3", ((string[])(null)));
+this._4DataDrivenAddToLogin("3", ((string[])(null)));
 #line hidden
         }
         

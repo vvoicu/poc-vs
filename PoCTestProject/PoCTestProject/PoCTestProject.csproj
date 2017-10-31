@@ -121,7 +121,6 @@
     <Compile Include="Com\Sites\Prma\Steps\NavigationSteps.cs" />
     <Compile Include="Com\Sites\Prma\Steps\PrmaLoginSteps.cs" />
     <Compile Include="Com\Tools\Constants.cs" />
-    <Compile Include="Com\Tools\CustomRetry.cs" />
     <Compile Include="Features\Heatmap.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

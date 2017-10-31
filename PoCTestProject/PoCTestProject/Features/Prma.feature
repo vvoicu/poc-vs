@@ -4,28 +4,28 @@
 	I want to be told the sum of two numbers
 
 @mytag @yourtag
-Scenario: 1Add two numbers
+Scenario: 1 Add two numbers
 	Given I navigate to the login URL
 	And I enter valid credentials
 	When I go to heatmap
 
 @Dia
-Scenario: 2Steel Request
+Scenario: 2 Steel Request
 	Given I navigate to the login URL
 	And I enter valid credentials
 
 @dur
-Scenario: 3Add my pickle
+Scenario: 3 Add my pickle
 	Given I navigate to the login URL
 	And I enter valid credentials
 	
 
 @mytag @someTag
-Scenario Outline: 4Add to login
+Scenario Outline: 4 Data Driven Add to login
 	Given I navigate to the login URL
 	And I enter valid credentials
 
 Examples: 
-| 1 |
-| 2 |
-| 3 |
+| Head |
+| 2    |
+| 3    |

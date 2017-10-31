@@ -30,7 +30,7 @@ namespace PoCTestProject.Com.Sites.Prma.Pages
             new WebDriverWait(webdriver, TimeSpan.FromSeconds(20)).Until(ExpectedConditions.ElementIsVisible(countText));
 
             //test moves to fast in some instances, need to wait for the field to be populated with the text
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(4000);
 
 
             String countRawText = webdriver.FindElement(countText).Text;
