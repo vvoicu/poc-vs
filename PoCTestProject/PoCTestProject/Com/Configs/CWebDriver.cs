@@ -124,6 +124,8 @@ namespace PoCTestProject.Com.Configs
                 //init Reports
                 //htmlReports = new ExtentHtmlReporter(Constants.ExtentReportFile);
                 htmlReports = new ExtentHtmlReporter(Thread.CurrentThread.ManagedThreadId + "-" + FormatUtils.GetTimestamp(DateTime.Now) + "-" + Constants.ExtentReportFile);
+
+                //THERE IS A BUG IN EXTENTREPORTS - when fixed multiple test threads will be able to aggregate in a single report
                 htmlReports.AppendExisting = true;
                 extentReports = new ExtentReports();
 
