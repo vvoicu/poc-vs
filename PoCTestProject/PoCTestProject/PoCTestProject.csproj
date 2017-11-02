@@ -109,7 +109,7 @@
     <Compile Include="Com\Configs\CWebDriver.cs" />
     <Compile Include="Com\Configs\Legacy\CWebDriver302.cs" />
     <Compile Include="Com\Configs\Legacy\CWebDriver240.cs" />
-    <Compile Include="Com\Configs\FormatUtils.cs" />
+    <Compile Include="Com\Tools\FormatUtils.cs" />
     <Compile Include="Com\DataModels\HeatmapCellModel.cs" />
     <Compile Include="Com\DataModels\HeatmapTooltipModel.cs" />
     <Compile Include="Com\Sites\Prma\Pages\Heatmap\HeatmapListPage.cs" />

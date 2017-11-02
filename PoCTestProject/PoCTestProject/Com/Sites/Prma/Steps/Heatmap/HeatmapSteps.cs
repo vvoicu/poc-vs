@@ -25,7 +25,7 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         [When(@"I select a coloured cell '(.*)'")]
         public void WhenISelectAColouredCell(string requirementsNumber)
         {
-            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+            //webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
             heatmapPage = new HeatmapListPage(webdriver.GetDriver());
             heatmapPage.GrabCellsColorsData();
         }
@@ -33,7 +33,7 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         [When(@"I select a coloured cell with '(.*)' colors")]
         public void WhenISelectAColouredCellWithColors(int colorCount)
         {
-            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+            //webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
             heatmapPage = new HeatmapListPage(webdriver.GetDriver());
             Boolean isFound = heatmapPage.ClickOnColouredCell(colorCount);
 
@@ -44,7 +44,7 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         [When(@"I check the number of each requirement")]
         public void WhenICheckTheNumberOfEachRequirement()
         {
-            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+            //webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
             heatmapTooltipPage = new HeatmapTooltipPage(webdriver.GetDriver());
 
            IList<HeatmapTooltipModel> data = heatmapTooltipPage.GrabTooltipData();

@@ -63,28 +63,53 @@ namespace PoCTestProject.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Heatmap", new string[] {
-                "prma",
-                "heatmap"}, SourceLine=6)]
-        public virtual void Heatmap()
+        public virtual void Heatmap(string colorScheme, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Heatmap", new string[] {
-                        "prma",
-                        "heatmap"});
-#line 7
+            string[] @__tags = new string[] {
+                    "prma",
+                    "heatmap",
+                    "ddt"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Heatmap", @__tags);
+#line 15
 this.ScenarioSetup(scenarioInfo);
-#line 8
+#line 16
  testRunner.Given("I navigate to the login URL", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
+#line 17
  testRunner.And("I enter valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
+#line 18
  testRunner.When("I navigate to the heatmap", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 11
- testRunner.And("I select a coloured cell with \'3\' colors", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 12
+#line 19
+ testRunner.And(string.Format("I select a coloured cell with \'{0}\' colors", colorScheme), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 20
  testRunner.And("I check the number of each requirement", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Heatmap, 1", new string[] {
+                "prma",
+                "heatmap",
+                "ddt"}, SourceLine=23)]
+        public virtual void Heatmap_1()
+        {
+#line 15
+this.Heatmap("1", ((string[])(null)));
+#line hidden
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Heatmap, 2", new string[] {
+                "prma",
+                "heatmap",
+                "ddt"}, SourceLine=23)]
+        public virtual void Heatmap_2()
+        {
+#line 15
+this.Heatmap("2", ((string[])(null)));
+#line hidden
         }
         
         [TechTalk.SpecRun.TestRunCleanup()]

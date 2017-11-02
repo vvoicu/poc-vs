@@ -34,6 +34,19 @@ namespace PoCTestProject.Com.Selenium
 
         }
 
+        [BeforeStep]
+        public void BeforeReportStep()
+        {
+            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo, "Step Start:");
+        }
+
+
+        [AfterStep]
+        public void AfterReportStep()
+        {
+            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo, "Step Finish:");
+        }
+
         [AfterScenario]
         public void TearDown()
         {

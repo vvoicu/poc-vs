@@ -62,6 +62,19 @@ namespace PoCTestProject.Com.Configs
             return testInstance;
         }
 
+        public void LogStep(StepInfo stepInfo, string prefix)
+        {
+            if (ConfigurationManager.AppSettings["step.screenshot"].Contains("true"))
+            {
+                testInstance.Log(Status.Pass, prefix + " " + FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text));
+                testInstance.AddScreenCaptureFromPath(generateScreenshot());
+            }
+            else
+            {
+                testInstance.Log(Status.Pass, prefix + " " + FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text));
+            }
+        }
+
         public void LogStep(StepInfo stepInfo)
         {
             if (ConfigurationManager.AppSettings["step.screenshot"].Contains("true"))

@@ -20,7 +20,7 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         [Given(@"I navigate to the login URL")]
         public void GivenINavigateToTheLoginURL()
         {
-            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+            //webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
             var baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
             webdriver.GetDriver().Navigate().GoToUrl(baseUrl + "/login");
         }
@@ -28,7 +28,7 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         [Given(@"I enter valid credentials")]
         public void GivenIEnterValidCredentials()
         {
-            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+            //webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
             loginPage = new LoginPage(webdriver.GetDriver());
 
             var userName = ConfigurationManager.AppSettings["adminUser"];
@@ -42,7 +42,7 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         [When(@"I go to heatmap")]
         public void WhenIGoToHeatmap()
         {
-            webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
+            //webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo);
             var baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
             webdriver.GetDriver().Navigate().GoToUrl(baseUrl + "/heatmap");
             Assert.AreSame("are", "there");
