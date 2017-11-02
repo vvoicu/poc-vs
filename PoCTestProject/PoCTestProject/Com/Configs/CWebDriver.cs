@@ -36,13 +36,10 @@ namespace PoCTestProject.Com.Configs
 
             //init reports
             SetReportsConfiguration();
-
-            //objectContainerPrivate.RegisterInstanceAs<IWebDriver>(webdriver);
         }
 
         internal ExtentReports GetExtentReport()
         {
-            //return SingleReport.GetInstance();
             return extentReports;
         }
 

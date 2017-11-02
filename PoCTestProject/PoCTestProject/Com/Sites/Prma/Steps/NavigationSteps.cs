@@ -7,7 +7,6 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
     [Binding]
     class NavigationSteps
     {
-
         private CWebDriver webdriver;
         private NavigationPage navigationPage;
 
