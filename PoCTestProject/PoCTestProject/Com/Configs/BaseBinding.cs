@@ -59,6 +59,7 @@ namespace PoCTestProject.Com.Selenium
 
             //close driver
             webdriver.GetDriver().Quit();
+            
             //write data to report file
             report.Flush();
         }
