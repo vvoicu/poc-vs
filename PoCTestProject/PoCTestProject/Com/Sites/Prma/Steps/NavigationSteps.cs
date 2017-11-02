@@ -19,7 +19,7 @@ namespace PoCTestProject.Com.Sites.Prma.Steps
         public void WhenINavigateToTheHeatmap()
         {
             navigationPage = new NavigationPage(webdriver.GetDriver());
-            navigationPage.clickOnHeatmap();
+            navigationPage.ClickOnHeatmap();
         }
 
     }

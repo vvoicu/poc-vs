@@ -51,7 +51,6 @@ namespace PoCTestProject.Com.Configs
         public void CreateTest(String testName)
         {
             testInstance = extentReports.CreateTest(testName);
-            //testInstance = extentReports.CreateTest("One").CreateNode(testName);
         }
 
         public ExtentTest GetTestReportInstance()

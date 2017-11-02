@@ -17,10 +17,9 @@ namespace PoCTestProject.Com.Sites.Prma.Pages
 
         public By navigationContainer = By.CssSelector("div.sidemenu");
 
-        private void clickOnMenu(string menuLabel)
+        private void ClickOnMenu(string menuLabel)
         {
             new WebDriverWait(webdriver, TimeSpan.FromSeconds(Constants.WAIT_TIME_DEFAULT)).Until(ExpectedConditions.ElementIsVisible(navigationContainer));
-
             IList<IWebElement> menuList = webdriver.FindElements(By.CssSelector("div.sidemenu div.clickable"));
 
             foreach (IWebElement menuNow in menuList)
@@ -34,9 +33,9 @@ namespace PoCTestProject.Com.Sites.Prma.Pages
             }
         }
         
-        public void clickOnHeatmap()
+        public void ClickOnHeatmap()
         {
-            clickOnMenu("heatmap");
+            ClickOnMenu("heatmap");
         }
 
     }
