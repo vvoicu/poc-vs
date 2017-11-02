@@ -13,5 +13,6 @@ namespace PoCTestProject.Com.Tools
         //public static String ReportPath = @"C:\Users\oik\ExtentReports\";
         public static String ExtentReportFile = ReportPath + @"ExtentReport.html";
         public static String PICTURE_NAME = "SS";
+        public static double WAIT_TIME_DEFAULT = 20;
     }
 }

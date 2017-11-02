@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using PoCTestProject.Com.DataModels;
+using PoCTestProject.Com.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace PoCTestProject.Com.Sites.Prma.Pages.Heatmap
         {
             IList<HeatmapTooltipModel> results = new List<HeatmapTooltipModel>();
 
-            new WebDriverWait(webdriver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(tooltipContainer));
+            new WebDriverWait(webdriver, TimeSpan.FromSeconds(Constants.WAIT_TIME_DEFAULT)).Until(ExpectedConditions.ElementToBeClickable(tooltipContainer));
             IList<IWebElement> positiveItems = webdriver.FindElements(By.CssSelector(".heatmap-data-cell-tooltip li[ng-repeat*='positiveStatuses']"));
 
             //tooltip row level data

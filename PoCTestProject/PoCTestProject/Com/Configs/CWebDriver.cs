@@ -77,15 +77,7 @@ namespace PoCTestProject.Com.Configs
 
         public void LogStep(StepInfo stepInfo)
         {
-            if (ConfigurationManager.AppSettings["step.screenshot"].Contains("true"))
-            {
-                testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text));
-                testInstance.AddScreenCaptureFromPath(generateScreenshot());
-            }
-            else
-            {
-                testInstance.Log(Status.Pass, FormatUtils.formatCamelCaseText(stepInfo.StepDefinitionType + stepInfo.Text));
-            }
+            LogStep(stepInfo, "");
         }
 
         public void Flush()

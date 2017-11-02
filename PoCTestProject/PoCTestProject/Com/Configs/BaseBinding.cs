@@ -39,8 +39,7 @@ namespace PoCTestProject.Com.Selenium
         {
             webdriver.LogStep(ScenarioContext.Current.StepContext.StepInfo, "Step Start:");
         }
-
-
+        
         [AfterStep]
         public void AfterReportStep()
         {
@@ -62,8 +61,6 @@ namespace PoCTestProject.Com.Selenium
             webdriver.GetDriver().Quit();
             report.Flush();
         }
-
-
-
+        
     }
 }
