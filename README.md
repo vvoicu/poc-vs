@@ -11,21 +11,21 @@ In Visual Studio go to:
   
 # Project Structure
 
-|-Configs
-|--  BaseBinding.cs    - Acts as the point of webdriver injection into other step classes. It also contains the before/after actions that configure and quits the driver; and the logging of steps and report creation.
-|--  CWebDriver.cs     - Is an abstraction over WebDriver and ExtentReports. Driver initialization, Screenshot handling and report logging are described in this class.
-|-DataModels
-|--  HeatmapCellModel.cs - Is used during test data extraction.
-|-Sites
-|--  Prma               - Each site or application code should be self contained, having two sections - Pages and Steps
-|---  Pages             - Pages will define application sections, by identifying the elements and defining actions
-|----   HeatmapListPage.cs
-|----   HeatmapTooltipPage.cs
-|----   ...
-|---  Steps             - Steps contain the specflow binding and implementation for that test component. Steps rely on pages to interact with the page elements. Steps also inherit the webdriver from the BaseBinding.cs (this is the reason they have a constructor)
-|----   NavigationSteps.cs
-|----   PrmaLoginSteps.cs
-|----   ...
-|-Tools
-|-- Constants.cs        - project wide properties and constants
-|-- FormatUtils.cs      - date, name and string formatting
+|-Configs <br />
+|--  BaseBinding.cs    - Acts as the point of webdriver injection into other step classes. It also contains the before/after actions that configure and quits the driver; and the logging of steps and report creation. <br />
+|--  CWebDriver.cs     - Is an abstraction over WebDriver and ExtentReports. Driver initialization, Screenshot handling and report logging are described in this class. <br />
+|-DataModels <br />
+|--  HeatmapCellModel.cs - Is used during test data extraction. <br />
+|-Sites <br />
+|--  Prma               - Each site or application code should be self contained, having two sections - Pages and Steps <br />
+|---  Pages             - Pages will define application sections, by identifying the elements and defining <br />
+|----   HeatmapListPage.cs <br />
+|----   HeatmapTooltipPage.cs <br />
+|----   ... <br />
+|---  Steps             - Steps contain the specflow binding and implementation for that test component. Steps rely on pages to interact with the page elements. Steps also inherit the webdriver from the BaseBinding.cs (this is the reason they have a constructor) <br />
+|----   NavigationSteps.cs <br />
+|----   PrmaLoginSteps.cs <br />
+|----   ... <br />
+|-Tools <br />
+|-- Constants.cs        - project wide properties and constants <br />
+|-- FormatUtils.cs      - date, name and string formatting <br />
